@@ -1,6 +1,5 @@
 import mongoose from 'mongoose';
 import Movie from './models/movie';
-var dbConfig = require('./config/dbconnect');
 
 const movies = [
   {
@@ -94,9 +93,9 @@ const movies = [
     genre: 'Comedy',
   },
 ];
-
+const mongo_location = 'mongodb://'+CONFIG.db_host+':'+CONFIG.db_port+'/'+CONFIG.db_name;
 // Connect to MongoDB
-mongoose.connect(dbConfig.url);
+mongoose.connect(mongo_location);
 
 // Go through each movie
 movies.map(data => {

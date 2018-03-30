@@ -1,19 +1,23 @@
-import Movie from '../models/movie';
-import moment from 'moment';
+const Movie = require('../models').Movie;
+const moment = require('moment');
 
 // Hardcode the days for the sake of simplicity
 const days = ['Today', 'Tomorrow', moment().add(2, 'days').format('ddd, MMM D')];
 // Same for the times
 const times = ['9:00 AM', '11:10 AM', '12:00 PM', '1:50 PM', '4:30 PM', '6:00 PM', '7:10 PM', '9:45 PM'];
 
-exports.getMovies = function (req, res) {
+const get = async function (req, res) {
+  res.setHeader('Content-Type', 'application/json');
   Movie.find().lean().exec((err, movies) => res.json(
-      {
-        movies: movies.map(movie => ({
-          ...movie,
-          days,
-          times
-        }))
-      }
+    {
+      movies: movies.map(movie => ({
+        ...movie,
+        days,
+        times
+      }))
+    }
   ));
+
+  return ReS(res, { movies: Movie.toWeb() });
 }
+module.exports.get = get;

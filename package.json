@@ -6,6 +6,8 @@
     "start": "node ./bin/www"
   },
   "dependencies": {
+    "babel": "^6.23.0",
+    "babel-cli": "^6.26.0",
     "bcrypt": "^1.0.3",
     "bcrypt-promise": "^2.0.0",
     "body-parser": "~1.18.2",

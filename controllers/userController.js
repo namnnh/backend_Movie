@@ -2,7 +2,6 @@ const User = require('../models').User;
 const authService   = require('./../services/AuthService');
 
 const create = async function(req, res){
-    console.log(req);
     res.setHeader('Content-Type', 'application/json');
     const body = req.body;
     if(!body.unique_key && !body.email && !body.phone){
