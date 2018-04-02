@@ -23,6 +23,7 @@ router.delete('/users', passport.authenticate('jwt', { session: false }), UserCo
 router.post('/users/login', UserController.login);
 
 router.get('/movies', passport.authenticate('jwt', { session: false }), MovieController.get);  
+router.get('/render-movies', MovieController.renderDb);  
 
 
 

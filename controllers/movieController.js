@@ -1,5 +1,6 @@
 const Movie = require('../models').Movie;
 const moment = require('moment');
+const populateService   = require('./../services/populateService');
 
 // Hardcode the days for the sake of simplicity
 const days = ['Today', 'Tomorrow', moment().add(2, 'days').format('ddd, MMM D')];
@@ -21,3 +22,9 @@ const get = async function (req, res) {
   return ReS(res, { movies: Movie.toWeb() });
 }
 module.exports.get = get;
+
+const renderDb = async function (req, res) {
+  populateService.renderMovies();
+  return ReS(res, { message:'Successfully created new user.' });;
+}
+module.exports.renderDb = renderDb;

@@ -95,7 +95,9 @@ const movies = [
 ];
 const mongo_location = 'mongodb://'+CONFIG.db_host+':'+CONFIG.db_port+'/'+CONFIG.db_name;
 // Connect to MongoDB
-mongoose.connect(mongo_location);
+mongoose.connect(mongo_location).catch((err)=>{
+  console.log('*** Can Not Connect to Mongo Server:', mongo_location)
+});
 
 // Go through each movie
 movies.map(data => {
